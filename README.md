@@ -4,6 +4,8 @@
 
 ### route prefix = /api/v1
 
+### authenticatin = Using Authentication header: "Bearer $Token".
+
 | Endpoint                  | Function                               | Requires auth | Query Params | Body                                                   |
 | ------------------------- | -------------------------------------- | ------------- | ------------ | ------------------------------------------------------ |
 | /meals/post-meal          | POST a new meal log.                   | Yes           | null         | {"hashtags": [hashtags], "foodItems": [foodItems]}     |
