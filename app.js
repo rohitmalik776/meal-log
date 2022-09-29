@@ -11,9 +11,13 @@ const mealsRouter = require("./routes/meal");
 const userRouter = require("./routes/user");
 const hashtagRouter = require("./routes/hashtag");
 const foodItemRouter = require("./routes/fooditem");
+const authRouter = require("./routes/auth");
 
 // Import error controller for 404 route.
 const errorController = require("./controllers/error");
+
+// Import middlewares.
+const authMiddleware = require("./middleware/is-auth");
 
 // Make an instance of Express application.
 const app = Express();
@@ -23,10 +27,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routing v1 apis.
-app.use("/api/v1/meals", mealsRouter);
-app.use("/api/v1/user", userRouter);
-app.use("/api/v1/hashtag", hashtagRouter);
-app.use("/api/v1/foodItem", foodItemRouter);
+// Authenticated routes.
+app.use("/api/v1/meals", authMiddleware, mealsRouter);
+app.use("/api/v1/user", authMiddleware, userRouter);
+app.use("/api/v1/hashtag", authMiddleware, hashtagRouter);
+app.use("/api/v1/foodItem", authMiddleware, foodItemRouter);
+
+// Un authenticated routes.
+app.use("/api/v1/auth", authRouter);
 
 // Index
 app.get("/", (req, res, next) => {

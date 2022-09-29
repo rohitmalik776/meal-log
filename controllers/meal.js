@@ -36,7 +36,7 @@ exports.getUserMeals = (req, res, next) => {
 };
 
 exports.postMeal = async (req, res, next) => {
-    const log = new Meal(req.body.userId, req.body.hashtags, req.body.foodItems);
+    const log = new Meal(req.userId, req.body.hashtags, req.body.foodItems);
 
     var allMealsExist = true;
 

@@ -4,8 +4,8 @@ const MongoClient = MongoDb.MongoClient;
 
 let _db;
 
-const mongoConnect = async (callback) => {
-    return MongoClient.connect(process.env.MONGODBURI).then(
+const mongoConnect = async () => {
+    return MongoClient.connect(process.env.MONGODB_URI).then(
         (client) => {
             _db = client.db();
             return client;
