@@ -6,6 +6,8 @@
 
 ### authenticatin = Using Authentication header: "Bearer $Token".
 
+### Body should be in JSON format.
+
 | Endpoint                  | Function                                 | Requires auth | Query Params | Body                                                   |
 | ------------------------- | ---------------------------------------- | ------------- | ------------ | ------------------------------------------------------ |
 | /meals/post-meal          | (POST) a new meal log.                   | Yes           | null         | {"hashtags": [hashtags], "foodItems": [foodItems]}     |
