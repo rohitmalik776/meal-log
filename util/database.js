@@ -4,11 +4,11 @@ const MongoClient = MongoDb.MongoClient;
 
 let _db;
 
-const mongoConnect = (callback) => {
-    MongoClient.connect(process.env.MONGODBURI).then(
+const mongoConnect = async (callback) => {
+    return MongoClient.connect(process.env.MONGODBURI).then(
         (client) => {
             _db = client.db();
-            callback();
+            return client;
         }
     ).catch(
         err => {

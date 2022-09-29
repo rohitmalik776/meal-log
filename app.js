@@ -39,7 +39,11 @@ app.use("/404", errorController.get404);
 app.use(errorController.get404);
 
 // Connect to MongoDB database.
-mongoConnect(() => {
-    console.log("Connected to DB");
-    app.listen(4000);
-});
+mongoConnect().then(
+    (_) => app.listen(4000, (err) => {
+        if (err) {
+            throw err;
+        }
+        console.log(`Listening on ${4000}`);
+    })
+);
