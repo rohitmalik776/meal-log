@@ -1,4 +1,4 @@
-const Log = require("../models/meal");
+const Meal = require("../models/meal");
 
 exports.getUserMeals = (req, res, next) => {
     const id = req.query.userId;
@@ -6,7 +6,7 @@ exports.getUserMeals = (req, res, next) => {
         res.send("Please provide userId as a query parameter.");
         return;
     }
-    Log.fetchWithId(id).then(
+    Meal.fetchWithId(id).then(
         (logs) => {
             res.send(JSON.stringify(logs));
         }
